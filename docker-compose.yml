@@ -1,0 +1,22 @@
+services:
+  java-back:
+    build:
+      dockerfile: /backend/DockerFile
+    networks:
+      - back-tier
+    volumes:
+      - data:/app/data
+    restart: always
+  nginx-front:
+    build:
+      dockerfile: /frontend/DockerFile
+    depends_on:
+      - java-back
+    restart: always
+    networks:
+      - back-tier
+volumes:
+  data:
+networks:
+  back-tier:
+    driver: bridge
