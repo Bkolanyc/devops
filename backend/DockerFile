@@ -1,4 +1,4 @@
-FROM openjdk:11-jre-slim
+FROM openjdk
 COPY /backend/ /tmp
 WORKDIR /tmp
 RUN javac Server.java
